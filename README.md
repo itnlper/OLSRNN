@@ -11,10 +11,9 @@ Most of the codes were written in C++:
 
 # Requirements
 1. To run the model the open source tools Eigen (a C++ template library for linear algebra) need to be downloaded: http://eigen.tuxfamily.org/index.php?title=Main_Page. Put the folder ```Eigen``` in ```/lib/Eigen```.   
-2. If you want to run the model on the  task of opinion targets recognition, you should download:    
-Word Embeddings: http://nlp.stanford.edu/data/glove.42B.300d.zip. Put the word embedding file in the folder ```/res```.   
-Datasets from SemEval-2014: http://alt.qcri.org/semeval2014/task4/index.php?id=data-and-tools. Some sample training files have been put in ```/res```, you should preprocess the raw datasets to the same format with the sample files.
+2. If you want to run the model on the  task of opinion targets recognition, download Word Embeddings at: http://nlp.stanford.edu/data/glove.42B.300d.zip, and put the word embedding file in the folder ```/res```.   
+
 
 # Demo
-After successfully completing the [Requirements](#requirements), you'll be ready to run the demo. First of all, you shuold 
-We have already trained the model in the filed of Restaurant and Laptop, and the modle files are stored in the the folder ```/comfig```.
+After successfully completing the [Requirements](#requirements), you'll be ready to run the demo which returns all the opinion targets in the input sentence. We have already trained the model in the filed of Restaurant and Laptop, and the modle files are stored in the the folder ```/comfig```.    
+First of all, you shuold 
