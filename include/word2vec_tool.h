@@ -20,6 +20,7 @@ private:
 
 public:
 
+    Word2VecTool();    //Default Initialization
     Word2VecTool(const string word2vec_file, bool has_header);    //initialize a object with word vector file path 
     void initWordIndexDict();    //initialize word_index_dict with geiven word vector file
     void getWrodVect(string, MatrixXd&);    //get the vector of geiven word
