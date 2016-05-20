@@ -37,7 +37,7 @@ make demo_laptop
 
 #Beyond the demo
 ##Opinion target recognition
-If you want to train the model on the task of opinion target recognition,firstly you should download the datasets from SemEval-2014: http://alt.qcri.org/semeval2014/task4/index.php?id=data-and-tools, and preprocess the raw datasets to the same format with the sample files in the folder ```/res/training```. And then you can trained the model by:  
+If you want to train the model on the task of opinion target recognition,firstly you should download the datasets from SemEval-2014: http://alt.qcri.org/semeval2014/task4/index.php?id=data-and-tools, and preprocess the raw datasets to the same format with the sample files in the folder ```/res```. And then you can trained the model by:  
 ```
 make training_restaurant learning_rate=0.001 momentum_rate=0.9 regularization=2 interation_num=10
 ```
