@@ -15,9 +15,8 @@ void AspectTool::getInputData(string file_name, vector<MatrixXd*> &input_datas, 
         return;
     }
     
-    Word2VecTool word_vec_tool("../res/glove.42B.300d.txt", false);
-    //word_vec_tool.initWordIndexDict();    
-    word_vec_tool.loadWordDict("word_index_dictionary");
+    Word2VecTool word_vec_tool;
+    word_vec_tool.loadWordDict("../res/Word_Vector_Index");
     
     string temp_word;
 
@@ -167,15 +166,15 @@ double AspectTool::calF1Score(const vector<MatrixXd*> &predict_labels, const vec
 void AspectTool::realTest(string model_file)
 {
     //initialize word vector tool
-    Word2VecTool word_vec_tool("../res/glove.42B.300d.txt", false);
-    //word_vec_tool.initWordIndexDict();    
-    word_vec_tool.loadWordDict("word_index_dictionary");
+    Word2VecTool word_vec_tool;
+    word_vec_tool.loadWordDict("../res/Word_Vector_Index");
     
     cout << "Please input the test sectence : " << endl;
     string sentence;
     getline(cin, sentence);
 
-cout << sentence << endl;
+    //cout << sentence << endl;
+    //word tokenized
     StringTool st;
     vector<string> word_token = st.tokenize(sentence);
     
@@ -190,15 +189,16 @@ cout << sentence << endl;
     vector<MatrixXd*> input_datas;
     input_datas.push_back(p_input_data);
 
-//cout << *p_input_data << endl;
+    //model initialization and prediction
     OLSRNN olsrnn(model_file);
-
     vector<MatrixXd*> predict_labels = olsrnn.predict(input_datas);
-
     MatrixXd temp_label = *(predict_labels[0]);
 
-cout << temp_label << endl;
+    //predicted labels
+    //cout << temp_label << endl;
+    
     string aspect_term = "";
+    int term_num = 0;
     for (int i = 0; i < temp_label.cols(); ++i)
     {
         if (temp_label(1, i) == 1)
@@ -214,14 +214,22 @@ cout << temp_label << endl;
             if (aspect_term.size() > 0)
             {
                 cout << "Aspect Term : " << aspect_term << endl;
+                ++term_num;
             }
             aspect_term = "";
         }
     }
 
+    //treatment of tail
     if (aspect_term.size() > 0)
     {
         cout << "Aspect Term : " << aspect_term << endl;
+        ++term_num;
+    }
+
+    if (term_num == 0)
+    {
+        cout << "There is no opinion target in the input sentence!"<<endl;
     }
 
     return;

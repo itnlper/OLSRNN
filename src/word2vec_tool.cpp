@@ -7,6 +7,11 @@
 
 using namespace Eigen;
 
+Word2VecTool::Word2VecTool()
+{
+    return;
+}
+
 //Initialize the object with word vector file path
 Word2VecTool::Word2VecTool(const string word2vec_file, bool has_header = false)
 {
@@ -98,11 +103,6 @@ void Word2VecTool::initWordIndexDict()
         else
         {
             now_pos = ftell(w2v_p);    //record the offset
-            //print out the word_index_dict
-            if (word_index_dict.size() % 10000 == 0)
-            {
-                cout << word_index_dict.size() << endl; 
-            }
         }
     }
 
@@ -115,12 +115,13 @@ void Word2VecTool::initWordIndexDict()
 void Word2VecTool::loadWordDict(string file_name)
 {
     ifstream i_stream(file_name.c_str());
-    
     if (!i_stream)
     {
         throw runtime_error(file_name + " opens failed !");
     }
 
+    i_stream >> word2vec_file >> vector_length; 
+    
     while (true)
     {
         string word;
@@ -150,6 +151,8 @@ void Word2VecTool::saveWordDict(string file_name)
     {
         throw runtime_error(file_name + " opens failed !");
     }
+
+    o_stream << word2vec_file << ' ' << vector_length << endl;
 
     for (map<string, long long>::iterator mi = word_index_dict.begin(); mi != word_index_dict.end(); ++mi)
     {
