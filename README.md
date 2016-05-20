@@ -45,7 +45,7 @@ and
 ```
 make training_laptop learning_rate=0.001 momentum_rate=0.9 regularization=2 interation_num=10
 ```
-You can change the parameters according to the actual situation. To learn more about the parameters, please see the source code. After the training the model will be stored automatically in the folder ```/config``` with a name according to the parameters.
+You can change the parameters according to the actual situation. To learn more about the parameters, please see the source codes. After the training the model will be stored automatically in the folder ```/config``` with a name according to the parameters.
 And then you can test the model on the test sets:   
 ```
 make test_restaurant model_file=model_restaurant
@@ -57,8 +57,8 @@ make test_laptop model_file=model_laptop
 Note that you should change the model_flie to your own.  
 
 ##Other Task   
-If you want to employ the model to other task, you shuold write a cpp file by yourself. Some reminders are listed here:   
-- dsds
+If you want to employ the model to other task, you shuold write a new cpp file according to your task. Some reminders are listed here:   
+- Add a header file: ```#include"include/olsrnn.h"```
 - Model initialization: 
 ```
 OLSRNN(int input_cell_num, int memory_cell_num, int output_cell_num)
@@ -71,5 +71,11 @@ stochasticGradientDescent(vector<MatrixXd*> input_matrix, vector<MatrixXd*> labe
 ```
 vector<MatrixXd*> predict(vector<MatrixXd*> input_matrix)
 ```
+- Input format: the input format of the model is a vector of ```MatrixXd*```, each element of the vector points to a matrix whose line counts denote the dimensionality of input and the column counts denote the sequence length.
+- Ouput format: the output format of the model is a vector of ```MatrixXd*```, each element of the vector points to a matrix whose line counts denote the dimensionality of output and the column counts denote the sequence length.
+- Compile: 
+```
+make compile file_name=your_cpp_file
+```
 
-More details can be found in the source code.
+More details can be found in the source codes.
