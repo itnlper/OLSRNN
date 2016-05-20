@@ -57,8 +57,7 @@ make test_laptop model_file=model_laptop
 Note that you should change the model_flie to your own.  
 
 ##Other Task   
-If you want to employ the model to other task, you shuold write a new cpp file according to your task. Some reminders are listed here:   
-- Add a header file: ```#include"include/olsrnn.h"```
+If you want to employ the model to other task, you shuold call the function of the model by include the header file ```include/olsrnn.h```. Some reminders are listed here:   
 - Model initialization: 
 ```
 OLSRNN(int input_cell_num, int memory_cell_num, int output_cell_num)
