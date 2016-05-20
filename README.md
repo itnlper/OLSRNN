@@ -28,11 +28,11 @@ make create_index file_name=glove.42B.300d.txt
 Note that ```glove.42B.300d.txt``` is the sample name of word embedding file, you shuold change it according to the actual situation.    
 Then you can run the demo in the domain of Restaurant:  
 ```
-make restaurant
+make demo_restaurant
 ```  
 and in the domain of Laptop:
 ```
-make laptop
+make demo_laptop
 ```  
 
 #Beyond the demo
