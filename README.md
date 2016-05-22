@@ -70,8 +70,7 @@ stochasticGradientDescent(vector<MatrixXd*> input_matrix, vector<MatrixXd*> labe
 ```
 vector<MatrixXd*> predict(vector<MatrixXd*> input_matrix)
 ```
-- Input format: the input format of the model is a vector of ```MatrixXd*```, each element of the vector points to a matrix whose line counts denote the dimensionality of input and the column counts denote the sequence length.
-- Ouput format: the output format of the model is a vector of ```MatrixXd*```, each element of the vector points to a matrix whose line counts denote the dimensionality of output and the column counts denote the sequence length.
+- Input/Ouput format: the input format of the model is a vector of ```MatrixXd*```, each element of the vector points to a matrix whose line counts denote the dimensionality of input/ouput and the column counts denote the sequence length.
 - Compile: 
 ```
 make compile file_name=your_cpp_file
